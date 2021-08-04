@@ -1,0 +1,11 @@
+# Ensure wlan driver is initialized before starting urfkill
+
+start on started lightdm
+
+script
+    # Initialize qcacld wlan module via writing ON to /dev/wlan
+    while [ ! -e /dev/wlan ]; do sleep 1; done
+    echo ON > /dev/wlan
+
+    exec /usr/lib/aarch64-linux-gnu/urfkill/urfkilld
+end script
