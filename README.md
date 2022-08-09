@@ -24,7 +24,8 @@ fastboot reboot fastboot
 ```
  3. Flash system.img and boot.img, then reboot:
 ```bash
-fastboot flash system out/system.img
-fastboot flash boot out/boot.img
+fastboot flash system_a out/system.img
+fastboot flash boot_a out/boot.img
+fastboot flash dtbo_a out/dtbo.img
 fastboot reboot
 ```
