@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+import subprocess
+import evdev
+from evdev import ecodes
+
+sw_device_name = "gpio-keys"
+osk_dconf_path = "/com/canonical/unity8/always-show-osk"
+
+devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+for device in devices:
+    if device.name == sw_device_name:
+        print("Found {}:".format(sw_device_name), device)
+        break
+else:
+    print("{} device missing".format(sw_device_name))
+    exit()
+
+for event in device.read_loop():
+    if event.type == ecodes.EV_SW and event.code == ecodes.SW_KEYPAD_SLIDE:
+        value = str(bool(event.value)).lower()
+        subprocess.run(["dconf", "write", osk_dconf_path, value])
