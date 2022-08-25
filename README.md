@@ -14,8 +14,10 @@ To manually build this project, follow these steps:
 ```
 
 ## Install
- 1. Unlock the device bootloader following the usual unlock procedure (enable Developer mode, turn on "OEM unlocking" option, then reboot to bootloader and execute `fastboot flashing unlock`)
- 2. Reboot to bootloader, format userdata (if switching from Android) and flash recovery.img from the build artifacts, then reboot to fastbootd mode:
+ 1. Make a backup of your device specific partitions `fsc fsg modemst1 modemst2 persist`. They can be necessary to restore fully working stock Android.
+[This guide on the F(x)tec Forum explains how to.](https://community.fxtec.com/topic/3630-pro¹-x-partition-backup-and-restore/)
+ 2. Unlock the device bootloader following the usual unlock procedure (enable Developer mode, turn on "OEM unlocking" option, then reboot to bootloader and execute `fastboot flashing unlock`)
+ 3. Reboot to bootloader, format userdata (if switching from Android) and flash recovery.img from the build artifacts, then reboot to fastbootd mode:
 ```bash
 fastboot format:ext4 userdata
 fastboot --set-active=a
