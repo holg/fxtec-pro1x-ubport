@@ -8,7 +8,7 @@ build:
     - ln -sf python2.7 /usr/bin/python
     - wget https://raw.githubusercontent.com/LineageOS/android_system_core/lineage-17.1/mkbootimg/mkbootimg.py -O /usr/bin/mkbootimg
     - git clone https://gitlab.com/ubports/community-ports/halium-generic-adaptation-build-tools -b halium-11 build
-    - ./build/build.sh
+    - ./build.sh
   artifacts:
     paths:
       - out/*
