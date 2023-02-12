@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Make sure system_ext is not mounted till mount-android-partitions.sh is fixed
+umount -l /android/system_ext || true
+
 # Wait for the property system to be up.
 while [ ! -e /dev/socket/property_service ]; do sleep 0.5; done
 
