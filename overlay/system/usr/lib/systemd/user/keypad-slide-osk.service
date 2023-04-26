@@ -1,0 +1,12 @@
+[Unit]
+Description=Enable/disable OSK on HW keyboard slide event
+Wants=dbus.socket
+After=dbus.socket
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/keypad-slide-osk
+
+[Install]
+WantedBy=graphical-session.target
